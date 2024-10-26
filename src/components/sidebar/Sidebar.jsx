@@ -4,6 +4,7 @@ import Size from "./Size";
 import Filling from "./Filling";
 import Icing from "./Icing";
 import Ribbons from "./Ribbons";
+import Candles from "./Candles";
 
 export default function Sidebar() {
   return (
@@ -51,9 +52,11 @@ export default function Sidebar() {
           <Ribbons />
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion defaultExpanded>
         <AccordionSummary>Candles</AccordionSummary>
-        <AccordionDetails></AccordionDetails>
+        <AccordionDetails>
+          <Candles />
+        </AccordionDetails>
       </Accordion>
       <Accordion>
         <AccordionSummary>Sparklers</AccordionSummary>
