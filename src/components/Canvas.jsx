@@ -9,10 +9,11 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { CandleContext } from "../context/CandleContext";
 
 // Get base URL dynamically from import.meta.url
-const baseURL = new URL(".", import.meta.url).href;
+const baseURL = new URL("/", import.meta.url).href;
+const isDevelopment = import.meta.env.MODE === "development";
 
-const cubePath = baseURL + "cake.glb";
-const candlePath = baseURL + "candle.glb";
+const cubePath = isDevelopment ? "cake.glb" : `${baseURL}cake.glb`;
+const candlePath = isDevelopment ? "candle.glb" : `${baseURL}candle.glb`;
 
 export default function Canvas() {
   const { size } = useContext(SizeContext);
@@ -27,6 +28,8 @@ export default function Canvas() {
   const cakeRef = useRef(null);
   const candlesRef = useRef([]); // Array to keep track of candle models
   const loader = new GLTFLoader();
+
+  console.log(cubePath);
 
   useEffect(() => {
     const canvas = document.getElementById("build-a-cake");
