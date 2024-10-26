@@ -8,8 +8,11 @@ import { RibbonContext } from "../context/RibbonContext";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { CandleContext } from "../context/CandleContext";
 
-const cubePath = "cake.glb";
-const candlePath = "candle.glb";
+// Get base URL dynamically from import.meta.url
+const baseURL = new URL(".", import.meta.url).href;
+
+const cubePath = baseURL + "cake.glb";
+const candlePath = baseURL + "candle.glb";
 
 export default function Canvas() {
   const { size } = useContext(SizeContext);
